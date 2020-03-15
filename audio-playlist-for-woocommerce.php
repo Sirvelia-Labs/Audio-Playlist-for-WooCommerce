@@ -13,14 +13,14 @@
  * @package           Audio_Playlist_for_WooCommerce_
  *
  * @wordpress-plugin
- * Plugin Name:       WordPress Plugin Boilerplate
- * Plugin URI:        https://sirvelia.com/audio-playlist-for-woocommerce-uri/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin Name:       Audio Playlist for WooCommerce
+ * Plugin URI:        https://github.com/Sirvelia/Audio-Playlist-for-WooCommerce
+ * Description:       Audio player with playlist for WooCommerce products.
  * Version:           1.0.0
- * Author:            Sirvelia or Your Company
+ * Author:            Sirvelia
  * Author URI:        https://sirvelia.com/
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GPL-3.0+
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       audio-playlist-for-woocommerce
  * Domain Path:       /languages
  */

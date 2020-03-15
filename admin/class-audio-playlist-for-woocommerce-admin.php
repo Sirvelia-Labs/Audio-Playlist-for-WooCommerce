@@ -1,4 +1,6 @@
 <?php
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -97,6 +99,41 @@ class Audio_Playlist_for_WooCommerce__Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/audio-playlist-for-woocommerce-admin.js', array( 'jquery' ), $this->version, false );
+
+	}
+
+	/**
+	 * Loads Composer dependencies.
+	 *
+	 * @since    1.0.0
+	 */
+	public function load_vendor() {
+		require_once SIMPLE_CSV_TABLES_PATH . 'vendor/autoload.php';
+    \Carbon_Fields\Carbon_Fields::boot();
+	}
+
+
+	/**
+	 * Adds custom meta fields to Product (Playlist).
+	 *
+	 * @since    1.0.0
+	 */
+	function sirvelia_attach_product_meta() {
+
+	  Container::make( 'post_meta', 'Playlist' )
+	      ->where( 'post_type', '=', 'product' )
+	      ->add_fields( array(
+	        Field::make( 'media_gallery', 'crb_product_playlist', __( 'Samples' ) )
+	          ->set_type( array( 'audio' ) )
+	      ) );
+
+	  Container::make( 'post_meta', 'Download Link' )
+	    ->where( 'post_type', '=', 'product' )
+	    ->add_fields( array(
+	      Field::make( 'text', 'crb_product_link', 'Link de descarga para distribuidores' )
+	        ->set_attribute( 'type', 'url' )
+	        ->set_attribute( 'placeholder', 'https://' )
+	    ) );
 
 	}
 
