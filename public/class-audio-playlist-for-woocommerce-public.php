@@ -211,64 +211,7 @@ class Audio_Playlist_for_WooCommerce__Public {
 	  }
 	}
 
-	function sirvelia_add_cart_button_single() {
-
-	  global $product;
-
-	  if ( $product ) {
-	    $post_id = $product->get_id();
-
-	    ob_start();
-	    ?>
-
-	    <a class="button playlist_add_to_cart" href="<?php echo do_shortcode( '[add_to_cart_url id="' . $post_id . '"]' ); ?>">
-	      <?php echo file_get_contents( plugin_dir_url( __FILE__ ) . 'img/cart-icon.svg' ); ?>
-	    </a>
-
-	    <?php
-	    $html = ob_get_contents();
-	    ob_end_clean();
-
-	    return $html;
-
-	  }
-	}
-
-	function sirvelia_download_link_btn() {
-
-	  global $product;
-
-	  $current_user = wp_get_current_user();
-	  $roles = ( array ) $current_user->roles;
-
-	  if ( is_user_logged_in() && ( in_array( 'distribuidor_es', $roles ) || in_array( 'distribuidor_eu', $roles ) || in_array( 'administrator', $roles ) ) ) {
-
-	    if ( $product ) {
-
-	      $post_id = $product->get_id();
-	      $link = carbon_get_post_meta( $post_id, 'crb_product_link' );
-
-	      if ( $link ) {
-	        ob_start(); ?>
-
-	        <a class="playlist_download_btn" href="<?php echo esc_url( $link ); ?>" target="_blank" download>
-	          Download
-	        </a>
-
-	        <?php
-	        $html = ob_get_contents();
-	        ob_end_clean();
-
-	        return $html;
-
-	      }
-
-	    }
-	  }
-
-	}
-
-	function sirvelia_get_product_playlist_shortcode() {
+	function product_playlist() {
 	    global $product;
 	    if ( $product ) {
 	      $post_id = $product->get_id();
@@ -290,7 +233,7 @@ class Audio_Playlist_for_WooCommerce__Public {
 	    return false;
 	}
 
-	function sirvelia_add_product_playlist_btn() {
+	function full_product_playlist() {
 
 	    global $product;
 	    if ( $product ) {
@@ -335,10 +278,8 @@ class Audio_Playlist_for_WooCommerce__Public {
 	 */
 	public function register_shortcodes(){
 
-		add_shortcode('playlist-add-to-cart', array($this, 'sirvelia_add_cart_button_single'));
-		//add_shortcode('playlist-download-link', array($this, 'sirvelia_download_link_btn'));
-		add_shortcode('playlist-single-playlist', array($this, 'sirvelia_add_product_playlist_btn'));
-		add_shortcode('playlist-show', array($this, 'sirvelia_get_product_playlist_shortcode'));
+		add_shortcode('show-playlist', array($this, 'product_playlist'));
+		add_shortcode('show-full-playlist', array($this, 'full_product_playlist'));
 
   }
 
