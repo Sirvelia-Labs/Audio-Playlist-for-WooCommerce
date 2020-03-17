@@ -108,7 +108,7 @@ class Audio_Playlist_for_WooCommerce__Admin {
 	 * @since    1.0.0
 	 */
 	public function load_vendor() {
-		require_once SIMPLE_CSV_TABLES_PATH . 'vendor/autoload.php';
+		require_once AUDIO_PLAYLIST_FOR_WOOCOMMERCE_PATH . 'vendor/autoload.php';
     \Carbon_Fields\Carbon_Fields::boot();
 	}
 
@@ -126,14 +126,6 @@ class Audio_Playlist_for_WooCommerce__Admin {
 	        Field::make( 'media_gallery', 'crb_product_playlist', __( 'Samples' ) )
 	          ->set_type( array( 'audio' ) )
 	      ) );
-
-	  Container::make( 'post_meta', 'Download Link' )
-	    ->where( 'post_type', '=', 'product' )
-	    ->add_fields( array(
-	      Field::make( 'text', 'crb_product_link', 'Link de descarga para distribuidores' )
-	        ->set_attribute( 'type', 'url' )
-	        ->set_attribute( 'placeholder', 'https://' )
-	    ) );
 
 	}
 
