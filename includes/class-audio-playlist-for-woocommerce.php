@@ -156,7 +156,7 @@ class Audio_Playlist_for_WooCommerce_ {
 
 
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'load_vendor' );
-		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_public, 'sirvelia_attach_product_meta' );
+		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'sirvelia_attach_product_meta' );
 
 		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
