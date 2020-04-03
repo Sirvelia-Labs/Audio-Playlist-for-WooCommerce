@@ -180,7 +180,8 @@ class Audio_Playlist_for_WooCommerce_ {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'sirvelia_show_playlist' );
 
-		$this->loader->add_action( 'woocommerce_after_shop_loop_item', $plugin_public, 'sirvelia_add_product_playlist_btn', 8, 0 );
+		$this->loader->add_action( 'woocommerce_after_shop_loop_item', $plugin_public, 'show_product_playlist', 8, 0 );
+		$this->loader->add_action( 'woocommerce_single_product_summary', $plugin_public, 'show_full_product_playlist', 25, 0 );
 	}
 
 	/**

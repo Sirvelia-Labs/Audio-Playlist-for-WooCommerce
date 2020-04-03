@@ -211,7 +211,15 @@ class Audio_Playlist_for_WooCommerce__Public {
 	  }
 	}
 
-	function product_playlist() {
+	public function show_product_playlist() {
+		echo $this->product_playlist();
+	}
+
+	public function show_full_product_playlist() {
+		echo $this->full_product_playlist();
+	}
+
+	public function product_playlist() {
 	    global $product;
 	    if ( $product ) {
 	      $post_id = $product->get_id();
