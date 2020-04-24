@@ -3,7 +3,7 @@ Contributors: sirvelia
 Donate link: https://sirvelia.com/
 Tags: playlist, woocommerce, player, audio
 Requires at least: 4.0
-Tested up to: 5.3.2
+Tested up to: 5.4
 Requires PHP: 7.2
 Stable tag: trunk
 License: GPLv3
