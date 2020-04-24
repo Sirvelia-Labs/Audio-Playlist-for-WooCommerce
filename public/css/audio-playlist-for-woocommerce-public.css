@@ -88,12 +88,10 @@
 
 .product a.play-all {
   margin: 5px 0;
-  display: inline-block !important;
-  color: black !important;
-  text-decoration: underline !important;
-  font-size: 1rem;
+  display: inline-block;
+  color: black;
   line-height: 1.2;
-  font-weight: bold !important;
+  font-weight: bold;
 }
 .product a.play-all:hover {
   text-decoration: none;
@@ -119,12 +117,10 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  background: #e02b20;
+  background: #000;
   padding-bottom: 10px;
   z-index: 9999;
   color: white;
-  font-size: 14px;
-  line-height: 1.5 !important;
 }
 #sirvelia-player .line-container {
   margin-top: 10px;
@@ -132,7 +128,7 @@ body {
   margin: 0 auto;
 }
 #sirvelia-player .playlist-wrapper {
-  background: #231f20;
+  background: #222;
 }
 #sirvelia-player .playlist-wrapper-container {
   display: block;
@@ -150,12 +146,12 @@ body {
   justify-content: center;
 }
 #sirvelia-player .player-buttons a {
-  font-size: 1.5rem;
+  font-size: 30px;
   line-height: 0.1;
   color: white;
+  text-decoration: none;
 }
 #sirvelia-player .player-buttons a:hover {
-  text-decoration: none;
   color: #eee;
 }
 #sirvelia-player .player-buttons a:focus {
@@ -180,24 +176,21 @@ body {
 #sirvelia-player .player-playlist span.song-info {
   border-bottom: 1px solid #eee;
 }
-#sirvelia-player .player-playlist li.active a {
-  text-decoration: underline;
+#sirvelia-player .player-playlist li.active span {
+  background: grey;
 }
 #sirvelia-player .player-playlist li a:hover {
   color: #eee;
   text-decoration: none;
 }
 #sirvelia-player .player-playlist li a.remove-song {
-  text-decoration: underline;
   margin-right: 5px;
 }
 #sirvelia-player .player-playlist li a.view-song {
-  text-decoration: underline;
   margin-left: 15px;
 }
 #sirvelia-player .player-info a.view-album {
   color: white;
-  text-decoration: underline;
 }
 #sirvelia-player .player-info .volume {
   display: inline-block;
@@ -243,31 +236,6 @@ body {
 #sirvelia-player a.showHide-btn:hover {
   color: #dadada;
 }
-
-.woocommerce #page-container a.button.sestore_add_to_cart {
-  color: white;
-  width: auto !important;
-  display: inline-block !important;
-  margin: 0 10px !important;
-  border-radius: 0 !important;
-  background: #e72b2b;
-  padding: 2px 5px 0 !important;
-  line-height: 1 !important;
-}
-.woocommerce #page-container a.sestore_download_btn {
-  margin: 5px 0;
-  display: inline-block !important;
-  color: black !important;
-  text-decoration: underline !important;
-  font-size: 1rem;
-  line-height: 1.2;
-  font-weight: bold !important;
-}
-
-.woocommerce #page-container a.button.sestore_add_to_cart svg {
-  width: 30px !important;
-}
-
 
 @media (min-width: 750px) {
   #sirvelia-player .flex {

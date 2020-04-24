@@ -36,6 +36,7 @@
   });
 
   function getPlaylistTime(currentTime) {
+		var minutes; var seconds;
     minutes = Math.floor(currentTime / 60);
     minutes = (minutes >= 10) ? minutes : "0" + minutes;
     seconds = Math.floor(currentTime % 60);
@@ -225,7 +226,7 @@
   **********/
   $('#sirvelia-player #player-audio').on('ended', function(e) {
     e.preventDefault();
-    $audio = $(this);
+    var $audio = $(this);
 
     var current_song = $('#sirvelia-player .playlist-item.active');
     var new_song = current_song.next();

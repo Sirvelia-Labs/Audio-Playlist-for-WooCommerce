@@ -120,10 +120,10 @@ class Audio_Playlist_for_WooCommerce__Admin {
 	 */
 	function sirvelia_attach_product_meta() {
 
-	  Container::make( 'post_meta', 'Playlist' )
+	  Container::make( 'post_meta', __( 'Playlist', 'audio-playlist-for-woocommerce' ) )
 	      ->where( 'post_type', '=', 'product' )
 	      ->add_fields( array(
-	        Field::make( 'media_gallery', 'crb_product_playlist', __( 'Samples' ) )
+	        Field::make( 'media_gallery', 'crb_product_playlist', __( 'Samples', 'audio-playlist-for-woocommerce' ) )
 	          ->set_type( array( 'audio' ) )
 	      ) );
 

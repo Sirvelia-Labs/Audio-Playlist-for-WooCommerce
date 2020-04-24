@@ -158,9 +158,6 @@ class Audio_Playlist_for_WooCommerce_ {
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'load_vendor' );
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'sirvelia_attach_product_meta' );
 
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
 	}
 
 	/**
@@ -178,10 +175,11 @@ class Audio_Playlist_for_WooCommerce_ {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'wp_footer', $plugin_public, 'sirvelia_show_playlist' );
+		$this->loader->add_action( 'wp_footer', $plugin_public, 'show_audio_playlist_woocommerce' );
 
 		$this->loader->add_action( 'woocommerce_after_shop_loop_item', $plugin_public, 'show_product_playlist', 8, 0 );
 		$this->loader->add_action( 'woocommerce_single_product_summary', $plugin_public, 'show_full_product_playlist', 25, 0 );
+
 	}
 
 	/**

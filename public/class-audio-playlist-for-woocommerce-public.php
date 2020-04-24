@@ -108,51 +108,68 @@ class Audio_Playlist_for_WooCommerce__Public {
 
 	}
 
-	function getPlaylistTime($time) {
-	  $minutes = floor($time / 60);
-	  $minutes = ($minutes >= 10) ? $minutes : "0" . $minutes;
-	  $seconds = floor($time % 60);
-	  $seconds = ($seconds >= 10) ? $seconds : "0" . $seconds;
-	  return $minutes . ':' . $seconds;
+	function getPlaylistTime( $time ) {
+
+		if ( is_string( $time ) ) {
+			$minutes = floor($time / 60);
+		  $minutes = ($minutes >= 10) ? $minutes : "0" . $minutes;
+		  $seconds = floor($time % 60);
+		  $seconds = ($seconds >= 10) ? $seconds : "0" . $seconds;
+		  return $minutes . ':' . $seconds;
+		} else {
+			return false;
+		}
+
 	}
 
 
-	function sirvelia_show_playlist() {
+	function show_audio_playlist_woocommerce() {
 
 	  if ( !is_cart() && !is_checkout() ) {
 	    $playlist = '';
-	    if(isset($_COOKIE["sirvelia-player-playlist"])) {
-	      $playlist_cookie = htmlspecialchars($_COOKIE["sirvelia-player-playlist"]);
-	      $playlist = json_decode( html_entity_decode( stripslashes ($playlist_cookie ) ) );
+
+	    if( isset( $_COOKIE["sirvelia-player-playlist"] ))  {
+	      $playlist_cookie = htmlspecialchars( $_COOKIE["sirvelia-player-playlist"] );
+	      $playlist = json_decode( html_entity_decode( stripslashes ( $playlist_cookie ) ) );
 	    }
-	    $time_cookie = isset($_COOKIE["sirvelia-player-time"]) ? htmlspecialchars($_COOKIE["sirvelia-player-time"]) : 0;
+
+	    $time_cookie = isset( $_COOKIE["sirvelia-player-time"] ) ? htmlspecialchars( $_COOKIE["sirvelia-player-time"] ) : 0;
 
 	    $active_song = '';
-	    if($playlist) {
+
+	    if( $playlist ) {
 	      $key = array_search('true', array_column($playlist, 'isActive'));
 	      $active_song = $playlist[$key];
 	    }
-	    ?>
+
+	   ?>
+
 	    <div id="sirvelia-player">
-	      <audio class="player-audio" id="player-audio" src="<?php if($active_song) echo $active_song->url; ?>" preload="metadata"></audio>
+	      <audio class="player-audio" id="player-audio" src="<?php if( $active_song ) echo $active_song->url; ?>" preload="metadata"></audio>
 
 	      <div class="playlist-wrapper" style="display: none">
 	        <div class="playlist-wrapper-container">
-	          <a class="remove-all" href="#"><?php _e('Remove all', 'sirvelia'); ?></a>
+	          <a class="remove-all" href="#"><?php _e('Remove all', 'audio-playlist-for-woocommerce'); ?></a>
 	          <ul class="player-playlist">
+
 	            <?php if($playlist): ?>
+
 	              <?php foreach ($playlist as $song): ?>
-	              <li class="playlist-item<?php if($song->isActive) echo ' active'; ?>">
-	                <span class="song-info">
-	                  <a class="song" href="<?php echo $song->url; ?>">
-	                    <span class="song-title"><?php echo $song->title; ?></span>
-	                  </a>
-	                  <a href="<?php echo $song->productUrl; ?>" class="view-song"><?php _e('view', 'sirvelia'); ?></a>
-	                </span>
-	                <a href="#" class="remove-song"><?php _e('remove', 'sirvelia'); ?></a>
-	              </li>
+
+		              <li class="playlist-item<?php if($song->isActive) echo ' active'; ?>">
+		                <span class="song-info">
+		                  <a class="song" href="<?php echo $song->url; ?>">
+		                    <span class="song-title"><?php echo $song->title; ?></span>
+		                  </a>
+		                  <a href="<?php echo $song->productUrl; ?>" class="view-song"><?php _e('view', 'audio-playlist-for-woocommerce'); ?></a>
+		                </span>
+		                <a href="#" class="remove-song"><?php _e('remove', 'audio-playlist-for-woocommerce'); ?></a>
+		              </li>
+
 	              <?php endforeach; ?>
+
 	            <?php endif; ?>
+
 	          </ul>
 	        </div>
 	      </div>
@@ -176,10 +193,10 @@ class Audio_Playlist_for_WooCommerce__Public {
 	              <?php if($active_song) echo $active_song->title; else echo "&nbsp;"; ?>
 	            </span>
 	            <span class="current-time">
-	              <?php if($time_cookie) echo getPlaylistTime($time_cookie); ?>
+	              <?php if($time_cookie) echo $this->getPlaylistTime($time_cookie); ?>
 	            </span>
 	            <?php if($active_song): ?>
-	              <a class="view-album" href="<?php echo $active_song->productUrl; ?>"><?php _e('view', 'sirvelia'); ?></a>
+	              <a class="view-album" href="<?php echo $active_song->productUrl; ?>"><?php _e('view', 'audio-playlist-for-woocommerce'); ?></a>
 	            <?php endif; ?>
 	          </div>
 
@@ -201,7 +218,7 @@ class Audio_Playlist_for_WooCommerce__Public {
 
 
 	        <a class="showHide-btn" href="#">
-	          Open Playlist ▲
+	          <?php _e( 'Open Playlist', 'audio-playlist-for-woocommerce' ); ?> ▲
 	        </a>
 	      </div>
 
@@ -226,7 +243,9 @@ class Audio_Playlist_for_WooCommerce__Public {
 	      $playlist = carbon_get_post_meta( $post_id, 'crb_product_playlist' );
 
 	      if ( $playlist ) {
+
 	        $data = array();
+
 	        foreach ($playlist as $song) {
 	          $data[] = array(
 	            'title'   => get_the_title($song),
@@ -235,7 +254,7 @@ class Audio_Playlist_for_WooCommerce__Public {
 	          );
 	        }
 	        $json_data = json_encode( $data );
-	        return '<a class="add-product-playlist play-all" href="#" title="' . __('Play All', 'sirvelia') . '" data-json=\'' . $json_data . '\'>' . __('Play All', 'sirvelia') . '</a>';
+	        return '<a class="add-product-playlist play-all" href="#" title="' . __( 'Play All', 'audio-playlist-for-woocommerce' ) . '" data-json=\'' . $json_data . '\'>' . __( 'Play All', 'audio-playlist-for-woocommerce' ) . '</a>';
 	      }
 	    }
 	    return false;
@@ -271,7 +290,7 @@ class Audio_Playlist_for_WooCommerce__Public {
 	        $list_songs .= '</ul>';
 
 	        $json_data = json_encode( $data );
-	        $btn = '<a class="add-product-playlist play-all" href="#" title="' . __('Play All', 'sirvelia') . '" data-json=\'' . $json_data . '\'>' . __('Play All', 'sirvelia') . '</a>';
+	        $btn = '<a class="add-product-playlist play-all" href="#" title="' . __( 'Play All', 'audio-playlist-for-woocommerce' ) . '" data-json=\'' . $json_data . '\'>' . __( 'Play All', 'audio-playlist-for-woocommerce' ) . '</a>';
 
 	        if( is_product() ) return $btn . $list_songs;
 	        else return $btn;
