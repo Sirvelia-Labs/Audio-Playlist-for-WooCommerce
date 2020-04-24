@@ -15,6 +15,8 @@ Audio player with playlist for WooCommerce products.
 
 Audio player with playlist for WooCommerce products.
 
+Playlist on Products will appear automatically on their Single Producte page.
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
