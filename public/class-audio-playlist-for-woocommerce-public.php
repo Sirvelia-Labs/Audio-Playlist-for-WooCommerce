@@ -129,11 +129,11 @@ class Audio_Playlist_for_WooCommerce__Public {
 	    $playlist = '';
 
 	    if( isset( $_COOKIE["sirvelia-player-playlist"] ))  {
-	      $playlist_cookie = htmlspecialchars( $_COOKIE["sirvelia-player-playlist"] );
-	      $playlist = json_decode( html_entity_decode( stripslashes ( $playlist_cookie ) ) );
+	      $playlist_cookie = wp_kses_post( $_COOKIE["sirvelia-player-playlist"] );
+	      $playlist = json_decode( html_entity_decode( stripslashes( $playlist_cookie ) ) );
 	    }
 
-	    $time_cookie = isset( $_COOKIE["sirvelia-player-time"] ) ? htmlspecialchars( $_COOKIE["sirvelia-player-time"] ) : 0;
+	    $time_cookie = isset( $_COOKIE["sirvelia-player-time"] ) ? wp_kses_post( $_COOKIE["sirvelia-player-time"] ) : 0;
 
 	    $active_song = '';
 
