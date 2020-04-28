@@ -15,7 +15,9 @@ Audio player with playlist for WooCommerce products.
 
 Audio player with playlist for WooCommerce products.
 
-Playlist on Products will appear automatically on their Single Producte page.
+Playlist on Products will appear automatically on their Single Product page.
+
+This plugin uses a cookie in order to keep the playlist between page refresh.
 
 == Installation ==
 
@@ -30,6 +32,12 @@ This section describes how to install the plugin and get it working.
 = A question that someone might have =
 
 An answer to that question.
+
+== Screenshots ==
+ 
+1. You need to create a Product in order to attach audio files for their playlist.
+2. Samples are stored in the Product's page, and they can be deleted, re-organized and added at any time.
+3. Playlist controls are always visible on the bottom of the page.
 
 == Changelog ==
 
