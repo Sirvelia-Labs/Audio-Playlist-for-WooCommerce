@@ -150,7 +150,7 @@
     e.preventDefault();
 
     $('#sirvelia-player .playlist-wrapper').toggle();
-    $this.text($.trim($this.text()) === "Open Playlist ▲" ? "Close Playlist ▼" : "Open Playlist ▲");
+    $this.text($.trim($this.text()) === AudioPlaylistForWoocommerceStrings.open_playlist + " ▲" ? AudioPlaylistForWoocommerceStrings.close_playlist + " ▼" : AudioPlaylistForWoocommerceStrings.open_playlist+ " ▲");
   });
 
 
@@ -420,7 +420,7 @@
             <a class="song" href="` + songUrl + `">
               <span class="song-title">` + json[i].title + `</span>
             </a>
-            <a href="` + json[i].productUrl + `" class="view-song">view</a>
+            <a href="` + json[i].productUrl + `" class="view-song">` + AudioPlaylistForWoocommerceStrings.view + `</a>
           </span>
           <a href="#" class="remove-song">remove</a>
         </li>`);
@@ -441,7 +441,7 @@
       }
 
       else {
-        $('#sirvelia-player .player-info .info1').append('<a href="' + json[0].productUrl + '" class="view-album">view</a>');
+        $('#sirvelia-player .player-info .info1').append('<a href="' + json[0].productUrl + '" class="view-album">' + AudioPlaylistForWoocommerceStrings.view + '</a>');
       }
 
       // Play pause

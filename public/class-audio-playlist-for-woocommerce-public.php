@@ -102,8 +102,19 @@ class Audio_Playlist_for_WooCommerce__Public {
 		wp_enqueue_script( 'sirvelia-cookies', plugin_dir_url( __FILE__ ) . 'js/cookies.js', array(), $this->version, true);
 
 		if ( !is_cart() && !is_checkout() ) {
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/audio-playlist-for-woocommerce-public.js', array( 'jquery' ), $this->version, true );
-	   // wp_enqueue_script( 'sirvelia-playlist', plugin_dir_url( __FILE__ ) . 'js/playlist.js', array('jquery'), $this->version, true);
+
+			wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/audio-playlist-for-woocommerce-public.js', array( 'jquery' ), $this->version, true );
+
+			$translation_array = array(
+		    'open_playlist' => __( 'Open Playlist', 'audio-playlist-for-woocommerce' ),
+		    'close_playlist' => __( 'Close Playlist', 'audio-playlist-for-woocommerce' ),
+				'view' => __( 'view', 'audio-playlist-for-woocommerce' ),
+			);
+
+			wp_localize_script( $this->plugin_name, 'AudioPlaylistForWoocommerceStrings', $translation_array );
+
+			wp_enqueue_script( $this->plugin_name );
+
 	  }
 
 	}

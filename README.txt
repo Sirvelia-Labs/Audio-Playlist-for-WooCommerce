@@ -34,12 +34,16 @@ This section describes how to install the plugin and get it working.
 An answer to that question.
 
 == Screenshots ==
- 
+
 1. You need to create a Product in order to attach audio files for their playlist.
 2. Samples are stored in the Product's page, and they can be deleted, re-organized and added at any time.
 3. Playlist controls are always visible on the bottom of the page.
 
 == Changelog ==
+
+= 1.0.1 =
+
+Fix: translatable strings on JavaScript file
 
 = 1.0 =
 * Initial release.
